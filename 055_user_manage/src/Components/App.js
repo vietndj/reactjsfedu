@@ -4,23 +4,48 @@ import Header from './Header';
 import Search from './Search';
 import TableData from './TableData';
 import AddUser from './AddUser';
-import DataUser from './Data.json';
-
+  import DataUser from './Data.json';
+ 
 const uuidv1 = require('uuid/v1');
 
 class App extends Component {
   constructor(props) {
     super(props);    
     this.state = {
-      hienThiForm:false  ,
-      data : DataUser,
+      hienThiForm:false  , 
       searchText:'',
+      data:[],
       editUserStatus:false,
-      userEditObject:{}
+      userEditObject:{},
       
     }
   }
   
+  componentWillMount() {
+    // kiem tra 
+    if(localStorage.getItem('userData') === null ){
+      localStorage.setItem('userData',JSON.stringify(DataUser));
+    }
+    else {
+      var temp = JSON.parse(localStorage.getItem('userData'));
+      this.setState({
+        data:temp
+      });
+      
+    }
+     
+  }
+  
+  
+   
+  deleteUser = (idUser) => {  
+   var  tempData = this.state.data.filter(item => item.id !== idUser);
+    this.setState({
+      data:tempData
+    });
+  // day vao du lieu 
+  localStorage.setItem('userData',JSON.stringify(tempData));
+  }
   getUserEditInfoApp = (info) => {
      this.state.data.forEach((value,key) => {
       if(value.id === info.id){
@@ -29,6 +54,8 @@ class App extends Component {
         value.Permission = info.Permission; 
       }
     })
+    localStorage.setItem('userData',JSON.stringify(this.state.data));
+
     
   }
   editUser = (user) => {
@@ -56,8 +83,8 @@ class App extends Component {
     this.setState({
       data:items
     });
-    console.log('ket noi ok ok ');
-    console.log(this.state.data); 
+    localStorage.setItem('userData',JSON.stringify(items));
+     
   }
 
   getTextSearch = (dl) => {
@@ -73,12 +100,17 @@ class App extends Component {
   }
 
    render() {   
-     var ketqua = []; 
-     this.state.data.forEach((item)=>{
+      var ketqua = []; 
+    this.state.data.forEach((item)=>{
         if(item.name.indexOf(this.state.searchText) !== -1){
           ketqua.push(item);
         }
      })
+
+ 
+   
+   
+    
     //  console.log(ketqua);
     return (
       <div>
@@ -96,6 +128,7 @@ class App extends Component {
                changeEditUserStatus= {()=>this.changeEditUserStatus()}
                />
               <TableData 
+              deleteUser = {(idUser) => this.deleteUser(idUser)}
               changeEditUserStatus= {()=>this.changeEditUserStatus()}
               editFun={(user) => this.editUser(user)} 
               dataUserProps={ketqua}/>

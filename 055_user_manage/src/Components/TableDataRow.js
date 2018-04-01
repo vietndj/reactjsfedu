@@ -6,9 +6,13 @@ class TableDataRow extends Component {
         else if(this.props.permission === 2){ return "Moderator ";}
         else  { return "Normal User ";}
     }
+    //deleteButtonClick
     editClick = () => {
         this.props.editFunClick();
         this.props.changeEditUserStatus(); 
+    }
+    deleteButtonClick = (idUser) => {
+         this.props.deleteButtonClick(idUser);
     }
     render() {
         // props.editFunClick 
@@ -27,7 +31,9 @@ class TableDataRow extends Component {
                             onClick={()=>this.editClick()}> 
                             
                             <i className="fa fa-edit    " /> Sửa </div>
-                            <div className="btn btn-danger btn-block xoa"> <i className="fa fa-delete    " /> Xoá </div>
+                            <div className="btn btn-danger btn-block xoa" onClick={(idUser) => this.deleteButtonClick(this.props.id)}>
+                             <i className="fa fa-delete    " /> Xoá 
+                             </div>
                         </div>
                         </td>
                     </tr>
