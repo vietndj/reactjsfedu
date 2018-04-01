@@ -1,0 +1,19 @@
+<manifest alg="2" build="2017.1.0.379" opt="false" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="fedu.vn" resolutions="1x" timestamp="1522086419219">
+  <folder name="css">
+    <file name="site_global.css" crc="444006867"/>
+    <file name="index.css" crc="4115136659" ref="index"/>
+    <file name="sua.css" crc="3774554156" ref="sua"/>
+    <file name="xoa.css" crc="4166296119" ref="xoa"/>
+  </folder>
+  <folder name="scripts">
+    <file name="jquery-1.8.3.min.js" crc="209076791" ref="index:sua:xoa"/>
+    <file name="museutils.js" crc="17924269" ref="index:sua:xoa"/>
+    <file name="whatinput.js" crc="86476730" ref="index:sua:xoa"/>
+    <file name="museconfig.js" crc="144853533" ref="index:sua:xoa"/>
+    <file name="jquery.watch.js" crc="4240030481" ref="index:sua:xoa"/>
+    <file name="require.js" crc="3861931657" ref="index:sua:xoa"/>
+  </folder>
+  <file name="index.html" crc="214972584" seo="true" mt="1522086372761" redirect="true"/>
+  <file name="sua.html" crc="366298076" seo="true" mt="1522086409957" redirect="true"/>
+  <file name="xoa.html" crc="3790396969" seo="true" mt="1522086415351" redirect="true"/>
+</manifest>
