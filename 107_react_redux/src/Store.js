@@ -18,6 +18,8 @@ var oldState = {
        return {...state,num:state.num.filter((value,i) => i !== action.number  )}       
 
    
+     
+   
      default:
        return state; 
     }
